@@ -9,7 +9,7 @@
 
   const cloudinary = new Cloudinary({
     cloud: {
-      cloudName: "djutofuyk",
+      cloudName: "dpfejzw4d",
     },
     url: {
       secure: true,
@@ -24,9 +24,9 @@
     });
     dropzone.on("sending", (file, xhr, formData) => {
       imageStatus.set(ImageStatus.UPLOADING);
-      formData.append("upload_preset", "ImageRemovebg");
+      formData.append("upload_preset", "rmBackground");
       formData.append("timestamp", Date.now() / 1000);
-      formData.append("api_key", 559384437634779);
+      formData.append("api_key", 263622429294244);
     });
     dropzone.on("success", (file, response) => {
       const { public_id: publicId, secure_url: url } = response;
@@ -36,9 +36,8 @@
         .effect(backgroundRemoval());
 
       imageStatus.set(ImageStatus.DONE);
-      modifiedImage.set(imageWithoutBackground.toURL())
+      modifiedImage.set(imageWithoutBackground.toURL());
       originalImage.set(url);
-
     });
     dropzone.on("error", (file, response) => {
       console.log("Ha ido Mal");
@@ -50,7 +49,7 @@
 <form
   id="dropzone"
   class="shadow-2xl border-dashed border-2 border-gray-300 rounded-lg aspect-video w-full flex items-center justify-center flex-col"
-  action="https://api.cloudinary.com/v1_1/djutofuyk/image/upload"
+  action="https://api.cloudinary.com/v1_1/dpfejzw4d/image/upload"
 >
   {#if $imageStatus === ImageStatus.READY}
     <button

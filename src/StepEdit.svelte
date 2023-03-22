@@ -22,23 +22,22 @@
   }
 </script>
 
-{#if processingImage}
-  <div class="flex flex-col justify-center items-center">
-    <div class="lds-ripple">
-      <div />
-      <div />
+<two-up>
+  <img src={$originalImage} alt="Imagen original subida por el usuario" />
+  {#if processingImage}
+    <div class="flex flex-col justify-center items-center">
+      <p class="text-right pl-4">Procesando imagen...</p>
     </div>
-    <p class="text-center mt-4">Prosesando Imagen ...</p>
-  </div>
-{:else}
-  <two-up>
-    <img src={$originalImage} alt="Imagen original subida por el usuario" />
+  {:else}
     <img src={$modifiedImage} alt="Imagen sin fondo subida por el usuario" />
-  </two-up>
-  <a
-    download
-    href={$modifiedImage}
-    class="block bg-blue-500 hover:bg-blue-700 w-full text-center font-bold text-white rounded-full px-4 py-2 mt-10"
-    >Descargar Imagen sin fondo</a
-  >
-{/if}
+  {/if}
+</two-up>
+
+<a
+  download
+  href={$modifiedImage}
+  class="block bg-blue-500 hover:bg-blue-700 text-xl text-center w-full font-bold text-white rounded-full px-4 py-2 mt-10"
+>
+  Descargar imagen sin fondo
+</a>
+
